@@ -1,0 +1,32 @@
+{
+  "name": "my-aweasome-service",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "my-aweasome-service/src",
+  "projectType": "library",
+  "release": {
+    "version": {
+      "generatorOptions": {
+        "packageRoot": "dist/{projectRoot}",
+        "currentVersionResolver": "git-tag"
+      }
+    }
+  },
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/my-aweasome-service",
+        "main": "my-aweasome-service/src/index.ts",
+        "tsConfig": "my-aweasome-service/tsconfig.lib.json",
+        "assets": ["my-aweasome-service/*.md"]
+      }
+    },
+    "nx-release-publish": {
+      "options": {
+        "packageRoot": "dist/{projectRoot}"
+      }
+    }
+  }
+}
